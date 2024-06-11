@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Product</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-3e0ivd5f89bbfh5w0ki6J5gkr3enKvGyYlFlvT9c5kj5u3KPC0en/U5I6RD74QW" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h1>Delete Product</h1>
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">Are you sure you want to delete "{{ product.product_name }}"?</h4>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Yes, delete</button>
+                    <a href="{% url 'product_list' %}" class="btn btn-secondary">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-qhI/ZXt9ExbIF9iFwHovhWn5u+U+vKhdfGQSDdQiyVYkFXQsUIUzWm6B3sNjc9os" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgT4MJln6CbrtPQb6p5/l3EZc0M9OH0QjH9gk6ikm6j6Skh5TnZ" crossorigin="anonymous"></script>
+</body>
+</html>

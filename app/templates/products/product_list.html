@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            padding-top: 20px;
+        }
+        .product-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .product-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .product-item a {
+            margin-right: 15px;
+        }
+        .product-item form {
+            margin: 0;
+        }
+        .btn-space {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Product List</h1>
+        <div class="text-center mb-4">
+            <a href="{% url 'product_create' %}" class="btn btn-primary btn-space">Add Product</a>
+            <a href="{% url 'product_sub_create' %}" class="btn btn-secondary btn-space">Add Product Sub Category</a>
+        </div>
+        <div class="product-list">
+            {% for product in products %}
+            <div class="product-item">
+                <div>
+                    <a href="{% url 'product_detail' product.pk %}">{{ product.product_name }}</a>
+                </div>
+                <div>
+                    <a href="{% url 'product_update' product.pk %}" class="btn btn-warning btn-space">Edit</a>
+                    <form action="{% url 'product_delete' product.pk %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-space">Delete</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
